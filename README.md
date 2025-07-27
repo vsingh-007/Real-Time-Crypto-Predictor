@@ -1,4 +1,4 @@
-# 🧠 Real-Time Crypto Price Direction Predictor 🚀
+# 🧠 Real-Time Crypto Price & Direction Predictor 🚀
 
 This project uses machine learning to predict **future price direction** of cryptocurrencies like **Bitcoin (BTC), Ethereum (ETH)**, and more. It includes real-time data ingestion, feature engineering, classification modeling (LightGBM), and evaluation using finance-relevant metrics.
 
