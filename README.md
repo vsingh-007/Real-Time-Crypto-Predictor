@@ -14,9 +14,6 @@ This project uses machine learning to predict **future price direction** of cryp
 - [📈 Evaluation Metrics](#-evaluation-metrics)
 - [📍 Exploratory Data Analysis (EDA)](#-exploratory-data-analysis-eda)
 - [🔍 Performance Summary](#-performance-summary)
-- [📂 Folder Structure](#-folder-structure)
-- [💡 Future Scope](#-future-scope)
-- [👨‍💻 Author](#-author)
 
 ---
 
