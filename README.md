@@ -41,53 +41,88 @@ Traditional regression-based financial models are difficult to interpret in trad
 ---
 
 ## 📊 Key Features
-
-- `open`, `high`, `low`, `volumefrom`, `volumeto`
-- `day`, `month`, `year`, `dayofweek`
-- Target: **Price Up (1)** or **Price Down (0)** (binary classification)
-
+- 📡 **Live Data Fetch** from [CryptoCompare API](https://min-api.cryptocompare.com/)
+- ⚙️ **Feature Engineering** using:
+  - SMA (Simple Moving Average)
+  - EMA (Exponential Moving Average)
+  - RSI (Relative Strength Index)
+  - Day, Month, Year, Day of Week
+- 🧠 **Trained Models**: LightGBM, XGBoost, Random Forest
+- 📊 **Visualizations**:
+  - Actual vs Predicted Price Charts
+  - Residual Plots
+  - SHAP Feature Importance
+  - Arrow-based Next Hour Price Movement
+- 📋 **Robust Logging** and Exception Handling
+- 📦 Ready for **deployment via Streamlit** or Flask
 ---
 
 ## 🧠 Model Used
 
-- **LightGBM Classifier**
-  - Fast and efficient gradient boosting framework
-  - Suitable for large-scale classification tasks
-- Feature Scaling with `StandardScaler`
-- Hyperparameter tuning and model evaluation
+| Model           | Description                                                       |
+|----------------|-------------------------------------------------------------------|
+| 🔷 **LightGBM**     | Gradient Boosting with optimized speed and memory               |
+| 🟠 **XGBoost**      | Accurate boosted trees for tabular data                         |
+| 🟢 **Random Forest** | Ensemble learning with high variance control                    |
+
+Each model is trained using **TimeSeriesSplit** and tuned for best validation performance using **GridSearchCV** (for LightGBM).
 
 ---
 
 ## 📈 Evaluation Metrics
 
-| Metric              | Why Used                                    |
-|---------------------|---------------------------------------------|
-| Accuracy            | General prediction success                  |
-| Precision, Recall   | Investment-focused metric (false alarms)    |
-| F1-Score            | Balanced tradeoff between precision/recall  |
-| ROC/AUC Score       | True classification power                   |
+To assess model performance, the following regression metrics are computed:
+
+| Metric             | Description                                      |
+|--------------------|--------------------------------------------------|
+| 📉 MAE (Mean Absolute Error)   | Average absolute difference between actual and predicted values |
+| 🧮 RMSE (Root Mean Squared Error) | Penalizes larger errors more heavily |
+| 📊 R² Score         | Indicates how well predictions match actual values |
+| 🧪 Residual Plots   | Visual checks for bias or variance in predictions |
+| 🧠 SHAP Analysis    | Interprets and visualizes feature importance |
+
+Each model's evaluation includes visual comparisons like residual histograms and scatter plots.
 
 ---
 
 ## 📍 Exploratory Data Analysis (EDA)
 
-- 📉 Line plots of closing prices & volume
-- 📊 Moving Averages (5-day, 10-day)
-- 🔁 RSI & % Price Change
-- 🔥 Heatmap of feature correlations
-- 📌 Class distribution analysis
+Exploratory analysis is performed using `ydata_profiling` and includes:
+
+- ✅ Statistical summary report of all features
+- ✅ Univariate visualizations using histograms and KDE plots
+- ✅ Bivariate scatter plots with regression lines (feature vs. target)
+- ✅ Correlation heatmap for all numerical features
+- ✅ Volatility trends and feature dynamics over time
+
+These insights inform feature engineering and model selection strategies.
 
 ---
 
 ## 🔍 Performance Summary
 
-| Metric    | Value     |
-|-----------|-----------|
-| Accuracy  | ~77%      |
-| Precision | ~75%      |
-| Recall    | ~72%      |
-| AUC       | ~0.81     |
 
-> 🚨 These results vary slightly depending on crypto symbol and time range used.
+- **LightGBM** had the best accuracy and lowest errors
+- **XGBoost** performed well, especially during volatility
+- **Random Forest** was stable but less precise
+- All models predicted next-hour price reliably
+- Visual plots (like arrows) made the direction easy to interpret
 
 ---
+
+## 📈 Sample Visuals
+ -    📉 Actual vs Predicted for all models
+ -    📊 Feature Importance (SHAP)
+ -    ➡️ Next Hour Movement (Arrow Plot)
+
+---
+
+## 🧪 Future Scope
+ -   Add LSTM/GRU models for sequence learning
+ -   Integrate Twitter/Reddit Sentiment Analysis
+ -   Create Streamlit Web App
+ -   Multi-symbol portfolio prediction
+ -   Backtesting on real trading strategies
+---
+
+> 🚨 These results vary slightly depending on crypto symbol and time range used.
